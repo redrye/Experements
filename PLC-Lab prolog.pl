@@ -1,10 +1,4 @@
 /*************
-
-Programming Language Concepts
-Prolog lab, due 2/28/2018
-Completed: 2/14/2018
-
-/*************
  * Project 2
  * Exersice 3
  *
@@ -15,7 +9,7 @@ Completed: 2/14/2018
  * snowing.
  *
  * Results:
- * freezing. = false
+ * freezing. = true
  * raining. = 'out of local stack'
  *
  * A better way to code for better results
@@ -32,8 +26,8 @@ freezing :- snowing.
 
 /*******************************************
  * Results:
- * freezing. = false
- * raining. = true
+ * freezing. = true
+ * raining. = false
  ******************************************/
 
 /*******************************************
@@ -58,10 +52,12 @@ arms(horse,0).
  Exersice 5: Write prolog clauses to express
  the following relationsip, given the parent
  relationship: grandparent, sibling, cousin.
+
  Bill - parent of Jill and Sarah, grandparent of
 	Sam, Ana, Jan, Smith.
  Jill - parent of Sam and Ana.
  Sarah - parent of Jan and Smith
+
 *********************************************/
 
 :- discontiguous parent/2.
@@ -97,3 +93,6 @@ gcd(X, Y, Z) :- X < Y, N is Y-X, gcd(N, X, Z).
 
 last([X],X).
 last([_|Y],X) :- last(Y,X).
+
+
+
