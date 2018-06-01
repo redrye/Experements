@@ -1,0 +1,110 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+--[[
+Author: Ryan Boudreaux
+
+Note: This Configuration reqiures the ip.sh file.
+]]
+
+conky.config = {
+-- ----------------------------------Windows Settings   
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_type = 'normal',
+    own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager',
+    
+    own_window_transparent = true,
+    own_window_argb_visual = true,
+    
+    background = false,
+    double_buffer = true,
+-- ----------------------------------Position    
+    alignment = 'top_right',
+    
+    gap_x = 0,
+    gap_y = 0,
+    
+    minimum_height = 5,
+    minimum_width = 5,
+-- ----------------------------------Font
+    draw_borders = false,
+    draw_graph_borders = false,
+    draw_outline = false,
+    draw_shades = false,
+    
+    font = 'monospace:size=8',
+    
+    uppercase = false,
+    use_spacer = 'none',
+    
+    text_buffer_size = 2048,
+    use_xft = true,
+    override_utf8_locale = true,
+-- ----------------------------------Other   
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    
+    stippled_borders = 0,
+    update_interval = 0.5,
+    
+    show_graph_scale = false,
+    show_graph_range = false,
+    
+    color0 = 'FFFFFF',
+    color1 = '04efeb',
+}
+
+conky.text = [[
+${color0}SYSTEM ${hr 2}
+${voffset 1}System: ${alignr}${sysname}
+${voffset 1}Kernel: ${alignr}${kernel}
+
+CPU: ${cpu cpu0}% ${alignr}${cpubar cpu0 8,60}
+${voffset 1}CPU1: ${cpu cpu1}% ${alignr}${cpubar cpu1 8,60}
+${voffset 1}CPU2: ${cpu cpu2}% ${alignr}${cpubar cpu2 8,60}
+${voffset 1}CPU3: ${cpu cpu3}% ${alignr}${cpubar cpu3 8,60}
+${voffset 1}CPU4: ${cpu cpu4}% ${alignr}${cpubar cpu4 8,60}
+${voffset 1}RAM used: ${memperc}% ${alignr}Free: ${memeasyfree}
+${voffset 1}SWAP used: ${swapperc}% ${alignr}Free: ${swapfree}
+
+CPU USAGE ${hr 2}
+${voffset 1}${top name 1}${alignr} ${top pid 1} ${top cpu 1}
+${voffset 1}${top name 2}${alignr} ${top pid 2} ${top cpu 2}
+${voffset 1}${top name 3}${alignr} ${top pid 3} ${top cpu 3}
+${voffset 1}${top name 4}${alignr} ${top pid 4} ${top cpu 4}
+${voffset 1}${top name 5}${alignr} ${top pid 5} ${top cpu 5}
+
+MEM USAGE ${hr 2}
+${voffset 1}${top_mem name 1}${alignr} ${top_mem pid 1} ${top_mem mem 1}
+${voffset 1}${top_mem name 2}${alignr} ${top_mem pid 2} ${top_mem mem 2}
+${voffset 1}${top_mem name 3}${alignr} ${top_mem pid 3} ${top_mem mem 3}
+${voffset 1}${top_mem name 4}${alignr} ${top_mem pid 4} ${top_mem mem 4}
+${voffset 1}${top_mem name 5}${alignr} ${top_mem pid 5} ${top_mem mem 5}
+
+HD ${hr 2}
+${voffset 1}Total: ${fs_size /} ${alignr}Free: ${fs_free /}
+${voffset 1}Home: ${alignr}${fs_used /root}
+
+${voffset 1}NETWORK ${hr 2}
+${voffset 1}Public IP: ${alignr}${execi 1 $HOME/Scripts/ip.sh}
+${voffset 1}${color0}Ethernet: ${alignr}${addrs eth0}
+${voffset 1}${color0}WIFI ($wireless_essid)${alignr}${addrs wlan0}
+
+${voffset 1}${color0}Ethernet ${stippled_hr 1}${color} 
+${voffset 1}Up: ${upspeed enp1s0} kb/s ${alignr}${upspeedgraph enp1s0 8,60}
+${voffset 1}Upload: ${alignr}${totalup enp1s0}
+${voffset 1}Down: ${downspeed enp1s0} kb/s ${alignr}${downspeedgraph enp1s0 8,60}
+${voffset 1}Download: ${alignr}${totaldown enp1s0}
+
+${voffset 1}${color0}WIFI ${stippled_hr 1}${color}
+${voffset 1}Channel: ${alignr}${wireless_channel wlan0}
+${voffset 1}Wireless Mode: ${alignr}${wireless_mode wlan0}
+${voffset 1}Quality: ${alignr}${wireless_link_qual_perc wlan0} %
+${voffset 1}Up: ${upspeed wlan0} kb/s ${alignr}${upspeedgraph wlan0 8,60}
+${voffset 1}Upload: ${alignr}${totalup wlan0}
+${voffset 1}Down: ${downspeed wlan0} kb/s ${alignr}${downspeedgraph wlan0 8,60}
+${voffset 1}Download: ${alignr}${totaldown wlan0}
+]]
+
